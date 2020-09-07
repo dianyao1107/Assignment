@@ -38,7 +38,7 @@ public class AdminCategory extends AppCompatActivity {
         CheckOrdersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminCategory.this,AdminNewOrdersActivity.class);
+                Intent intent = new Intent(AdminCategory.this, AdminNewOrdersActivity.class);
                 startActivity(intent);
             }
         });
