@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import Admin.AdminCategory;
 import Model.Users;
 import Prevalent.Prevalent;
 import io.paperdb.Paper;
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
-    private TextView AdminLink, NotAdminLink;
+    private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
 
     private String parentDbName = "Users";
     private CheckBox chkBoxRememberMe;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        ForgetPasswordLink = findViewById (R.id.forget_password_link);
         loadingBar = new ProgressDialog(this);
 
 
@@ -55,6 +57,16 @@ public class LoginActivity extends AppCompatActivity {
                 LoginUser();
             }
         });
+
+        ForgetPasswordLink.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (LoginActivity.this,ResetPasswordActivity.class);
+                intent.putExtra ("check", "login");
+                startActivity (intent);
+            }
+        });
+
         AdminLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,4 +1,4 @@
-package com.example.assignment;
+package Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.assignment.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +42,7 @@ public class AdminUserProductsActivity extends AppCompatActivity
 
 
         cartListRef = FirebaseDatabase.getInstance ().getReference ()
-                .child ("Cart List").child ("Admin View").child (userID).child ("Products");
+                .child ("Cart List").child ("Admin View").child (userID).child ("Product");
     }
 
     @Override

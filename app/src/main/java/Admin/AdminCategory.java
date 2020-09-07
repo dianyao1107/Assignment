@@ -1,4 +1,4 @@
-package com.example.assignment;
+package Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +8,16 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.assignment.HomeActivity;
+import com.example.assignment.MainActivity;
+import com.example.assignment.R;
+
 public class AdminCategory extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
 
-    private Button LogoutBtn,CheckOrdersBtn;
+    private Button LogoutBtn,CheckOrdersBtn,maintainProductBtn;
 
 
     @Override
@@ -23,12 +27,24 @@ public class AdminCategory extends AppCompatActivity {
 
         LogoutBtn = (Button) findViewById(R.id.admin_logout_btn);
         CheckOrdersBtn = (Button) findViewById(R.id.check_orders_btn);
+        maintainProductBtn = (Button) findViewById(R.id.maintain_btn);
+
+        maintainProductBtn.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(AdminCategory.this, HomeActivity.class);
+                intent.putExtra ("Admin","Admin");
+                startActivity(intent);
+                finish();
+            }
+        });
 
         LogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(AdminCategory.this,MainActivity.class);
+                Intent intent = new Intent(AdminCategory.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
