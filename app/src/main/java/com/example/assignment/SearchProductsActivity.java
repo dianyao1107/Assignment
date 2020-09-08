@@ -27,7 +27,6 @@ public class SearchProductsActivity extends AppCompatActivity {
     private Button SearchBtn;
     private EditText inputText;
     private RecyclerView searchList;
-
     private String SearchInput;
 
 
