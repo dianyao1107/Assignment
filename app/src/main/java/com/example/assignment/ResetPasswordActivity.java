@@ -58,7 +58,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         if (check.equals ("settings")) {
             pageTitle.setText ("Set Question");
-            titleQuestion.setText ("Please ser Answer for the Following Security Questions.");
+            titleQuestion.setText ("Please set Answer for the Following Security Questions.");
             verifyButton.setText ("Set");
 
             displayPreviousAnswers ();

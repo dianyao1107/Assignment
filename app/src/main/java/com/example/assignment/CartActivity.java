@@ -40,7 +40,8 @@ public class CartActivity extends AppCompatActivity {
     private int overTotalPrice = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
@@ -67,7 +68,6 @@ public class CartActivity extends AppCompatActivity {
         });
 
     }
-
 
 
 
