@@ -30,7 +30,9 @@ import Model.Cart;
 import Prevalent.Prevalent;
 import ViewHolder.CartViewHolder;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity
+{
+
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
 

@@ -82,14 +82,17 @@ public class ProductDetailsActivity extends AppCompatActivity
 
     private void addingToCartList()
     {
+        //get which time user are purchase this item, add in cart list
         String saveCurrentTime, saveCurrentDate;
         Calendar calForDate = Calendar.getInstance();
+        //format date
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd,yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
-
+        //format time
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentDate.format(calForDate.getTime());
 
+        //cart list
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         final HashMap<String, Object> cartMap = new HashMap<>();
@@ -101,6 +104,7 @@ public class ProductDetailsActivity extends AppCompatActivity
         cartMap.put("quantity", numberButton.getNumber());
         cartMap.put("discount", "");
 
+        //inside cart list have user view and admin view
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone()).child("Product").child(productID)
                 .updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>()
@@ -108,15 +112,17 @@ public class ProductDetailsActivity extends AppCompatActivity
                     @Override
                     public void onComplete(@NonNull Task<Void> task)
                     {
+
                         if (task.isSuccessful())
                         {
+                            //admin view can view user put inside cart product
                             cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Product").child(productID)
                                     .updateChildren(cartMap)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(ProductDetailsActivity.this, "Added to Cart List", Toast.LENGTH_SHORT).show();
-
+                                            //send the user to home activity
                                             Intent intent = new Intent(ProductDetailsActivity.this,HomeActivity.class);
                                             startActivity(intent);
                                         }
